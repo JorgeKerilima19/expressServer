@@ -1,1 +1,14 @@
-console.log("RUNNING...");
+const path = require("path");
+const express = require("express");
+
+const PORT = process.env.PORT || 5500;
+
+const app = express();
+
+app.get("/", (req, res) => {
+  res.send('Hello');
+});
+
+app.listen(PORT, () => {
+  console.log(`Running on server ${PORT}`);
+});
