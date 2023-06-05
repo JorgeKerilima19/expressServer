@@ -5,9 +5,17 @@ const PORT = process.env.PORT || 5500;
 
 const app = express();
 
-app.get("/", (req, res) => {
+app.get("^/$|/index(.html)?", (req, res) => {
   //   res.sendFile("./pages/index.html", { root: __dirname });
   res.sendFile(path.join(__dirname, "pages", "index.html"));
+});
+app.get("/mainPage(.html)?", (req, res) => {
+  //   res.sendFile("./pages/index.html", { root: __dirname });
+  res.sendFile(path.join(__dirname, "pages", "mainPage.html"));
+});
+app.get("/*(.html)?", (req, res) => {
+  //   res.sendFile("./pages/index.html", { root: __dirname });
+  res.redirect(301, "/mainPage");
 });
 
 app.listen(PORT, () => {
