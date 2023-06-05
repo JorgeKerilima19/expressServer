@@ -15,7 +15,7 @@ app.get("/mainPage(.html)?", (req, res) => {
 });
 app.get("/*(.html)?", (req, res) => {
   //   res.sendFile("./pages/index.html", { root: __dirname });
-  res.redirect(301, "/mainPage");
+  res.status(404).sendFile(path.join(__dirname,"pages","404.html"));
 });
 
 app.listen(PORT, () => {
