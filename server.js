@@ -5,7 +5,11 @@ const PORT = process.env.PORT || 5500;
 
 const app = express();
 
+app.use(express.urlencoded({ extended: false }));
 
+app.use(express.json());
+
+app.use(express.static(path.join(__dirname, "public")));
 
 app.get("^/$|/index(.html)?", (req, res) => {
   //   res.sendFile("./pages/index.html", { root: __dirname });
