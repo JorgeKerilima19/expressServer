@@ -61,6 +61,11 @@ app.get("/*", (req, res) => {
   res.status(404).sendFile(path.join(__dirname, "pages", "404.html"));
 });
 
+app.use((err, req, res, next) => {
+  console.log(err.stack);
+  res.status(500).send(err.message);
+});
+
 app.listen(PORT, () => {
   console.log(`Running on server ${PORT}`);
 });
